@@ -1,93 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Book</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="flipbook.js" defer></script>
+    <link rel='stylesheet' href='style.css'>
+    <script src='flipbook.js' defer></script>
 </head>
 <body>
 <!-- Previous Button -->
-<button id="prev-btn">
+<button id='prev-btn'>
     ◀
 </button>
 
-
-<!--&lt;!&ndash; Book &ndash;&gt;-->
-<!--<div id="book" class="book">-->
-<!--    &lt;!&ndash; Paper 1 &ndash;&gt;-->
-<!--    <div id="p1" class="paper">-->
-<!--        <div class="front">-->
-<!--            <div id="f1" class="front-content">-->
-<!--                <h1>Front 1</h1>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="back">-->
-<!--            <div id="b1" class="back-content">-->
-<!--                <h1>Back 1</h1>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Paper 2 &ndash;&gt;-->
-<!--    <div id="p2" class="paper">-->
-<!--        <div class="front">-->
-<!--            <div id="f2" class="front-content">-->
-<!--                <h1>Front 2</h1>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="back">-->
-<!--            <div id="b2" class="back-content">-->
-<!--                <h1>Back 2</h1>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Paper 3 &ndash;&gt;-->
-<!--    <div id="p3" class="paper">-->
-<!--        <div class="front">-->
-<!--            <div id="f3" class="front-content">-->
-<!--                <h1>Front 3</h1>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="back">-->
-<!--            <div id="b3" class="back-content">-->
-<!--                <h1>Back 3</h1>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 <script>
-    const NumofSides = 4;
+    preload = 11;
+    const NumofSides = 216;
     const NumofPages = Math.ceil(NumofSides / 2);
     const bookMake = document.createElement('div');
     bookMake.className = 'book';
-    bookMake.id = '#book';
+    bookMake.id = 'book';
     var pages = [];
     for (let p = 0; p < NumofSides; p++) {
         if (p % 2 === 0) {
             pages[p] = document.createElement('div');
             pages[p].className = 'front';
-            const frontContent = document.createElement('div');
+            const frontContent = document.createElement('img');
             frontContent.className = 'front-content';
-            frontContent.textContent = 'Page' + p;
+            if (p < preload) {
+                frontContent.src = 'pages/' +'Wanderers'+(p+1)+'.png';
+                // frontContent.alt = 'Page ' + p;
+            }
             pages[p].appendChild(frontContent)
         } else {
             pages[p] = document.createElement('div');
             pages[p].className = 'back';
-            const backContent = document.createElement('div');
+            const backContent = document.createElement('img');
             backContent.className = 'back-content';
-            backContent.textContent = 'Page' + p;
+            if (p < preload) {
+                backContent.src = 'pages/' +'Wanderers'+(p+1)+'.png';
+                // backContent.alt = 'Page ' + p;
+            }
             pages[p].appendChild(backContent)
 
             const paper = document.createElement('div');
             paper.className = 'paper';
             paper.id = '#p'+ Math.floor(p / 2)
-            paper.style.zIndex = NumofPages - Math.floor(p / 2)
+            paper.style.zIndex = NumofPages - Math.floor(p / 2);
             paper.appendChild(pages[p-1]);
             paper.appendChild(pages[p]);
-            console.log(paper);
             bookMake.appendChild(paper);
         }
     }
@@ -95,7 +57,7 @@
 </script>
 
 <!-- Next Button -->
-<button id="next-btn">
+<button id='next-btn'>
     ▶
 </button>
 
