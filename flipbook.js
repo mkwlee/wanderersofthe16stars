@@ -30,22 +30,28 @@ function closeBook(isAtBeginning) {
         book.style.transform = 'translateX(100%)';
     }
 
-    prevBtn.style.transform = 'translateX(0vh)';
-    nextBtn.style.transform = 'translateX(0vh)';
+    prevBtn.style.transform = 'translateX(0%)';
+    nextBtn.style.transform = 'translateX(0%)';
 }
 
 function goNextPage() {
     if(currentLocation < numOfPapers) {
         if (currentLocation === 0) {openBook()}
-        var page1 = pages[2*currentLocation+preload].firstElementChild
-        var page2 = pages[2*currentLocation+preload+1].firstElementChild
-        page1.src = 'pages/' +'Wanderers'+(2*currentLocation+preload+1)+'.png';
-        // page1.alt = 'Page ' + 2*currentLocation+3;
 
-        page2.src = 'pages/' +'Wanderers'+(2*currentLocation+preload+2)+'.png';
-        // page2.alt = 'Page ' + 2*currentLocation+4;
+        if (2*currentLocation+preload < NumofSides-1) {
+            var page1 = pages[2*currentLocation+preload].firstElementChild
+            var page2 = pages[2*currentLocation+preload+1].firstElementChild
+            page1.src = 'pages/' +'Wanderers'+(2*currentLocation+preload+1)+'.png';
+            page2.src = 'pages/' +'Wanderers'+(2*currentLocation+preload+2)+'.png';
+        } else if (2*currentLocation+preload === NumofSides-1) {
+            var page1 = pages[2*currentLocation+preload].firstElementChild
+            page1.src = 'pages/' +'Wanderers'+(2*currentLocation+preload+1)+'.png';
+        }
+
         papers[currentLocation].classList.add('flipped');
         papers[currentLocation].style.zIndex = currentLocation;
+
+
 
         if (currentLocation === numOfPapers-1) {closeBook(false)}
         currentLocation++;
@@ -55,10 +61,8 @@ function goNextPage() {
 function goPrevPage() {
     if(currentLocation > 0) {
         if (currentLocation === 1) {closeBook(true)}
-
         papers[currentLocation-1].classList.remove('flipped');
         papers[currentLocation-1].style.zIndex = numOfPapers-(currentLocation-1);
-
         if (currentLocation === numOfPapers) {openBook()}
         currentLocation--;
     }

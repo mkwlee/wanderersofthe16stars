@@ -19,7 +19,7 @@ body {
     position: relative;
     width: 58.846153846154vh;
     height: 90vh;
-    transition: transform 0.5s;
+    transition: transform 0.15s;
 }
 
 .paper {
@@ -41,7 +41,7 @@ body {
     top: 0;
     left: 0;
     transform-origin: left;
-    transition: transform 0.5s;
+    transition: transform 0.15s;
 }
 
 .front {
@@ -79,31 +79,9 @@ button {
     background-color: transparent;
     cursor: pointer;
     margin: 10px;
-    transition: transform 0.5s;
+    transition: transform 0.15s;
 }
 
-button:focus {
-    outline: none;
-}
-
-button:hover i {
+button:hover {
     color: #636363;
 }
-
-i {
-    font-size: 50px;
-    color: gray;
-}
-
-/*!* Paper stack order *!*/
-/*#p1 {*/
-/*    z-index: 3;*/
-/*}*/
-
-/*#p2 {*/
-/*    z-index: 2;*/
-/*}*/
-
-/*#p3 {*/
-/*    z-index: 1;*/
-/*}*/
