@@ -64,7 +64,7 @@ pages[16].appendChild(dimOverlay);
 for (let i = 0; i < numOfImages; i++) {
 
     images[i] = document.createElement('img');
-    images[i].src = 'images/image'+(i+1)+'.PNG';
+    images[i].src = 'images/image'+(i+1)+'.png';
     images[i].style.width = pages[16].offsetWidth*imageSize+'px';
     images[i].style.height = pages[16].offsetWidth*imageSize*( images[i].height/ images[i].width)+'px';
     images[i].style.position = 'absolute';
@@ -194,7 +194,7 @@ document.addEventListener('keydown', function(event) {
                 case 0:
                     console.log('torutum')
                     const torutum = document.createElement('img');
-                    torutum.src = 'images/image3.PNG';
+                    torutum.src = 'images/image3.png';
                     torutum.style.position = 'fixed';
                     torutum.style.top = '0';
                     torutum.style.left = '0';
@@ -209,7 +209,7 @@ document.addEventListener('keydown', function(event) {
                     break;
                 case 1:
                     const chaz = document.createElement('img');
-                    chaz.src = 'images/image4.WEBP';
+                    chaz.src = 'images/image4.webp';
                     chaz.style.position = 'fixed';
                     chaz.style.top = '0';
                     chaz.style.left = '0';
